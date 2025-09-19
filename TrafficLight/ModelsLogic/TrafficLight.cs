@@ -85,5 +85,10 @@ namespace TrafficLight.ModelsLogic
             else
                 timer.Stop();
         }
+
+        public void SubmitTime()
+        {
+            timer.Interval = AutoChangeTimerNumber * 1000;
+        }
     }
 }

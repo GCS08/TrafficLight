@@ -30,9 +30,9 @@
 
     <Grid
         ColumnDefinitions="*,*,*"
-        RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*"
         RowSpacing="5">
-        <!--  The page is split into 4 rows. Auto means each row sizes itself to its contents.  -->
+        <!--  The page is split into 6 rows. Auto means each row sizes itself to its contents.  -->
         <Frame
             Grid.Row="0"
             Grid.Column="1"
@@ -66,18 +66,32 @@
             Margin="5"
             Command="{Binding changeLightCommand}"
             Text="{x:Static m:Strings.changeLightText}" />
+        <Entry
+            Grid.Row="4"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            HorizontalTextAlignment="Center"
+            Keyboard="Numeric"
+            Text="{Binding AutoChangeTimerNumber}"
+            />
+        <Button
+            Grid.Row="4"
+            Grid.Column="2"
+            Margin="5"
+            Command="{Binding SumbitTimeCommand}"
+            Text="{x:Static m:Strings.submitAutoTimeChange}"/>
         <!--  Grid.row - puts the button in the fourth row.  -->
         <!--  Command - connects the button press to a command in the ViewModel  -->
         <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
         <!--  Text - takes a static string called changeLightText from the Strings class in your Models folder and uses it as the button text  -->
         <Button
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.ColumnSpan="3"
             Margin="5"
             Command="{Binding SwitchAutoChangeCommand}"
             Text="{Binding SwitchChangeLightText}" />
         <Image
-            Grid.Row="5"
+            Grid.Row="6"
             Grid.ColumnSpan="3"
             Source="{Binding LightImage}" />
         <!--  Grid.row - puts the button in the fourth row.  -->

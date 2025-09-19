@@ -18,7 +18,14 @@ namespace TrafficLight.ViewModel
         //So, the button in XAML runs trafficLight.ChangeLight() through this property. More correctly, it calls the method in this class, which automatically calls trafficLight.ChangeLight().
 
         public ICommand SwitchAutoChangeCommand { get => new Command(SwitchAutoChange); }
+        public ICommand SumbitTimeCommand { get => new Command(SubmitTime); }
 
+        private void SubmitTime()
+        {
+            trafficLight.SubmitTime();
+        }
+
+        public int AutoChangeTimerNumber { get => trafficLight.AutoChangeTimerNumber; set => trafficLight.AutoChangeTimerNumber = value; }
         public Color RedColor => trafficLight.RedColor;
         public Color YellowColor => trafficLight.YellowColor;
         public Color GreenColor => trafficLight.GreenColor;
@@ -46,6 +53,8 @@ namespace TrafficLight.ViewModel
             trafficLight.SwitchAutoChange();
             OnPropertyChanged(nameof(SwitchChangeLightText));
         }
+
+        
 
         //When the app creates a new MainPageVM, this method runs, as a constructor.
         //trafficLight.LightChanged is an event coming from TrafficLightModel.
