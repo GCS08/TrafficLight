@@ -1,4 +1,5 @@
-﻿using TrafficLight.ModelsLogic;
+﻿using Android.OS.Strictmode;
+using TrafficLight.ModelsLogic;
 
 namespace TrafficLight.Models
 {
@@ -52,6 +53,7 @@ namespace TrafficLight.Models
         public Color YellowColor => lights[(int)TrafficLight.Yellow].Color;
         public Color GreenColor => lights[(int)TrafficLight.Green].Color;
         //public abstract Color AutoBackground { get; set;}
+        public int AutoChangeTimerNumber { get; set; } = 1;
         public abstract string SwitchChangeLightText { get; }
         public abstract string LightImage { get; }//a string that defines the path/the name of the image we want to currently be displayed. for example: "crysmiley.jpg"
         protected LightImage lightImage = new();//defines a LightImage type variable that we will use to retrieve the LightImage string every time the ChangeButton is clicked
