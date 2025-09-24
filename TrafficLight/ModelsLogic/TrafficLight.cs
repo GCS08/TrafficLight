@@ -9,16 +9,25 @@ namespace TrafficLight.ModelsLogic
         //LightImage is a string property that when is called, returns the value that the GetLightImage returns when it is called
         //on the lightImage OBJECT (that is defined in the TrafficLightModel), with the current state (which is in the TrafficLightModel as well)
         public override string LightImage => lightImage.GetLightImage(state);
+
+        //SwitchChangeLightText is a string property that when is called, returns the value that the GetSwitchChangeLightText returns when it is called
+        //on the switchChangeLightText OBJECT (that is defined in the TrafficLightModel), with the bool isAutoChange (which is in the TrafficLightModel as well)
         public override string SwitchChangeLightText => switchChangeLightText.GetSwitchChangeLightText(isAutoChange);
+        
+        //A constructor for the model logic, allowing us to use the methods and the properties that are in this class.
         public TrafficLight()
         {
+            //timer.Elapsed is a list of methods that are automatically called when the timer is elapsed.
+            //To add methods to this list, we do this:
             timer.Elapsed += OnTimerElapsed;
         }
 
+        //Whenever the Enter button that is next to the numeric field is clicked, this method runs.
+        //It sets a new timer with different seconds.
         public override void SetAutoChangeSeconds(double seconds)
         {
-            timer.Stop();
-            timer = new(seconds * 1000);
+            timer.Stop();// At first, it stops the previous timer.
+            timer = new(seconds * 1000); // Creates a new timer. The user types seconds and not miliseconds, so we need to convert it.
             if (isAutoChange)
                 timer.Start();
             timer.Elapsed += OnTimerElapsed;

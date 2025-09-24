@@ -26,8 +26,13 @@ namespace TrafficLight.Models
         //What's special about the timer that it will restart everytime it finishes, means its just a while loop that runs every second.
         //new (1000) creates the timer of 1000ms, which is equal to 1s.
         protected System.Timers.Timer timer = new(1000);
+
+        //Defines a new bool that means if currently the auto change is on. Changed in the method SwitchAutoChange() which is in the TrafficLight model logic.
         protected bool isAutoChange = false;
-        protected TrafficLightState state = TrafficLightState.Red;//sets a state variable, holding the current state. obviously, the first one will be red.
+
+        //sets a state variable, holding the current state. obviously, the first one will be red.
+        protected TrafficLightState state = TrafficLightState.Red;
+
         //An array of type Light (that is a class on its own) that contains the lights of a traffic light in every moment. each light
         //in it has 2 properties - color, which is a type of color (a class defined in C#), and isOn - determines if the light is on or off.
         protected Light[] lights = { new Light(Colors.Red, true), new Light(Colors.Yellow, false), new Light(Colors.Green, false) };
@@ -48,20 +53,36 @@ namespace TrafficLight.Models
         //the things in the lights array, in the index of the wanted color position in the enum.
         //RedColor example:
         //TrafficLight.Red is a thing in the enum.
-        //Casting it to (int)TrafficLight.Red, returns its index in the enum.
-        //lights[(int)TrafficLight.Red] returns a light type thing in the lights array (defined in line 28).
+        //Casting it to (int)TrafficLight.Red, returns its index in the enum (which is 0).
+        //lights[(int)TrafficLight.Red] returns a light type thing in the lights array (defined in line 38).
         //lights[(int)TrafficLight.Red].Color go to the LightModel and gets the color of the light, type color (C# built in namespace).
         public Color RedColor => lights[(int)TrafficLight.Red].Color;
         public Color YellowColor => lights[(int)TrafficLight.Yellow].Color;
         public Color GreenColor => lights[(int)TrafficLight.Green].Color;
+        
+        //Creates a new property type double that means the seconds between each change of the lights.
+        //Has a get for when we create a new timer, and a set we want to retrieve the value from the view model.
         public double AutoChangeSeconds { get; set; }
+        
+        //An abstract method for when we want to adjust the timer that auto changes the lights.
         public abstract void SetAutoChangeSeconds(double autoChangeSeconds);
-        //public abstract Color AutoBackground { get; set;}
+
+        //An abstract string for what will be displayed if the auto change is on or off.
         public abstract string SwitchChangeLightText { get; }
-        public abstract string LightImage { get; }//a string that defines the path/the name of the image we want to currently be displayed. for example: "crysmiley.jpg"
-        protected LightImage lightImage = new();//defines a LightImage type variable that we will use to retrieve the LightImage string every time the ChangeButton is clicked
+
+        //a string that defines the path/the name of the image we want to currently be displayed. for example: "crysmiley.jpg"
+        public abstract string LightImage { get; }
+
+        //defines a LightImage type variable that we will use to retrieve the LightImage string every time the ChangeButton is clicked
+        protected LightImage lightImage = new();
+
+        //Creates the object that knows to handle the change of the text when the auto change light is on.
         protected SwitchChangeLightText switchChangeLightText = new();
-        public abstract void ChangeLight();//abstract ChangeLight, so TrafficLight will have to implement it.
+
+        //abstract ChangeLight, so TrafficLight will have to implement it.
+        public abstract void ChangeLight();
+
+        //abstract SwitchAutoChange, so TrafficLight will have to implement it.
         public abstract void SwitchAutoChange();
     }
 }
