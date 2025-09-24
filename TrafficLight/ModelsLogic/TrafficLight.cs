@@ -28,17 +28,16 @@ namespace TrafficLight.ModelsLogic
         {
             timer.Stop();// At first, it stops the previous timer.
             timer = new(seconds * 1000); // Creates a new timer. The user types seconds and not miliseconds, so we need to convert it.
-            if (isAutoChange)
-                timer.Start();
-            timer.Elapsed += OnTimerElapsed;
+            timer.Elapsed += OnTimerElapsed; // Adds the OnTimerElapsed method to the lists of method that run when the new timer is elapsed
+            if (isAutoChange)// If currently the auto change is on, it will start the new timer. if not, it wont.
+                timer.Start();//Starts the new timer.
         }
 
+        //This method will run every elapse of the timer because its in the lists on methods.
         private void OnTimerElapsed(object? sender, ElapsedEventArgs e)
         {
             ChangeLight();
         }
-
-
 
         //The main method that handles the light change.
         //Breakdown inside the method.
@@ -92,16 +91,17 @@ namespace TrafficLight.ModelsLogic
             }
         }
 
+        //Handles the switch of the auto change.
         public override void SwitchAutoChange()
         {
-            isAutoChange = !isAutoChange;
-            if (isAutoChange)
+            isAutoChange = !isAutoChange; // At first, it updates the bool.
+            if (isAutoChange)// If the auto change is on.
             {
-                ChangeLight();
-                timer.Start();
+                ChangeLight();// Changes the light.
+                timer.Start();// Starts the timer.
             }
             else
-                timer.Stop();
+                timer.Stop();// Stops the timer.
         }
     }
 }
