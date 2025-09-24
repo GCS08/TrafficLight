@@ -15,6 +15,15 @@ namespace TrafficLight.ModelsLogic
             timer.Elapsed += OnTimerElapsed;
         }
 
+        public override void SetAutoChangeSeconds(double seconds)
+        {
+            timer.Stop();
+            timer = new(seconds * 1000);
+            if (isAutoChange)
+                timer.Start();
+            timer.Elapsed += OnTimerElapsed;
+        }
+
         private void OnTimerElapsed(object? sender, ElapsedEventArgs e)
         {
             ChangeLight();

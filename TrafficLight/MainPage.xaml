@@ -12,8 +12,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:m="clr-namespace:TrafficLight.Models"
     xmlns:vm="clr-namespace:TrafficLight.ViewModel"
-    x:DataType="vm:MainPageVM"
-    BackgroundColor="LightBlue">
+    x:DataType="vm:MainPageVM">
     <!--  "x:Class="TrafficLight.MainPage"" - Creates the other half of MainPage.xaml.cs. Without this, the half the compiler auto-creates and the MainPage.xaml.cs won't match, and it'll create errors.  -->
     <!--"xmlns="http://schemas.microsoft.com/dotnet/2021/maui"" - Lets the xml understand that when I use xml tags like <Grid>, I use MAUI controls. That long URL is just an identifier — it’s not fetched from the internet.-->
     <!--  "xmlns:x="http://schemas.microsoft.com/winf x/2009/xaml"" - Gives the project language namespaces, allowing me to use x: helpers like x:Class, x:Name, x:Static, x:DataType, etc.  -->
@@ -30,7 +29,7 @@
 
     <Grid
         ColumnDefinitions="*,*,*"
-        RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*"
         RowSpacing="5">
         <!--  The page is split into 4 rows. Auto means each row sizes itself to its contents.  -->
         <Frame
@@ -76,8 +75,23 @@
             Margin="5"
             Command="{Binding SwitchAutoChangeCommand}"
             Text="{Binding SwitchChangeLightText}" />
-        <Image
+        <Entry
             Grid.Row="5"
+            Grid.ColumnSpan="2"
+            Grid.Column="0"
+            Margin="5"
+            Text="{Binding AutoChangeSeconds}"
+            Keyboard="Numeric"
+            Placeholder="{x:Static m:Strings.autoChangeSecText}"/>
+        <Button
+            Grid.Row="5"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            Margin="5"
+            Command="{Binding ApplyAutoChangeSec}"
+            Text="{x:Static m:Strings.autoChangeSecText}"/>
+        <Image
+            Grid.Row="6"
             Grid.ColumnSpan="3"
             Source="{Binding LightImage}" />
         <!--  Grid.row - puts the button in the fourth row.  -->

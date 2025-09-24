@@ -51,6 +51,8 @@ namespace TrafficLight.Models
         public Color RedColor => lights[(int)TrafficLight.Red].Color;
         public Color YellowColor => lights[(int)TrafficLight.Yellow].Color;
         public Color GreenColor => lights[(int)TrafficLight.Green].Color;
+        public double AutoChangeSeconds { get; set; }
+        public abstract void SetAutoChangeSeconds(double autoChangeSeconds);
         //public abstract Color AutoBackground { get; set;}
         public abstract string SwitchChangeLightText { get; }
         public abstract string LightImage { get; }//a string that defines the path/the name of the image we want to currently be displayed. for example: "crysmiley.jpg"

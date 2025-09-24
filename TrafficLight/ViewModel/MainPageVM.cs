@@ -6,9 +6,9 @@ using TrafficLight.ModelsLogic;  // for the TrafficLight brain class
 
 namespace TrafficLight.ViewModel
 {
-    class MainPageVM : ObservableObject /*It inherits from ObservableObject (a helper that raises PropertyChanged events so the UI updates when a property changes).*/
+    class MainPageVM : ObservableObject /*It inherits from ObservableObject ( helper that raises PropertyChanged events so the UI updates when a property changes).*/
     {
-        private ModelsLogic.TrafficLight trafficLight = new ();
+        private ModelsLogic.TrafficLight trafficLight = new();
         //This is a little box that holds your real traffic light logic (from the ModelsLogic folder).
         //The weird syntax is because the Traffic light class doesn't have a constuctor, so it just creates the object with the base class constructor (which is TrafficLightModel)
 
@@ -30,10 +30,18 @@ namespace TrafficLight.ViewModel
         //because it's in the base class. ModelsLogic.TrafficLight inherits from Models.TrafficLightModel.cs, where the colors are defined.
         //Look for the explanation there.
 
+        public double AutoChangeSeconds { get => trafficLight.AutoChangeSeconds; set => trafficLight.AutoChangeSeconds = value; }
+        public ICommand ApplyAutoChangeSec { get => new Command(SetAutoChangeSeconds); }
+
         public string LightImage => trafficLight.LightImage;
         //Defines a new property that holds the name of the displayed image.
         //When someone searches for its value, it'll ask the trafficLight created in line 11 to get it from the LightImage, defined
         //there at line 7.
+
+        private void SetAutoChangeSeconds()
+        {
+            trafficLight.SetAutoChangeSeconds(AutoChangeSeconds);
+        }
 
         //Calls the trafficLight.ChangeLight(); method, that knows how to change the lights:
         private void ChangeLight()
