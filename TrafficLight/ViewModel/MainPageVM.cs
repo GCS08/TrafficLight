@@ -18,11 +18,16 @@ namespace TrafficLight.ViewModel
         //So, the button in XAML runs trafficLight.ChangeLight() through this property. More correctly, it calls the method in this class, which automatically calls trafficLight.ChangeLight().
 
         public ICommand SwitchAutoChangeCommand { get => new Command(SwitchAutoChange); }
+        //ICommand is an interface for “something you can run from a button.”
+        //Command(SwitchAutoChange) builds a command object that calls the SwitchAutoChange method when the button is tapped.
+
+        public ICommand ApplyAutoChangeSec { get => new Command(SetAutoChangeSeconds); }
+        //ICommand is an interface for “something you can run from a button.”
+        //Command(SetAutoChangeSeconds) builds a command object that calls the SetAutoChangeSeconds method when the button is tapped.
 
         public Color RedColor => trafficLight.RedColor;
         public Color YellowColor => trafficLight.YellowColor;
         public Color GreenColor => trafficLight.GreenColor;
-        //public Color AutoBackground => trafficLight.AutoBackground;
         public string SwitchChangeLightText => trafficLight.SwitchChangeLightText;
         //This part is a little tricky.
         //We define new objects type Color that get their values from the property trafficLight (defined in line 11). The trick is that the trafficLight object
@@ -31,13 +36,15 @@ namespace TrafficLight.ViewModel
         //Look for the explanation there.
 
         public double AutoChangeSeconds { get => trafficLight.AutoChangeSeconds; set => trafficLight.AutoChangeSeconds = value; }
-        public ICommand ApplyAutoChangeSec { get => new Command(SetAutoChangeSeconds); }
+        //A new property type double that when something tries to get its value in this class it will search in trafficLight.AutoChangeSeconds
+        //and when something tries to set it, it will call the setter in trafficLight.AutoChangeSeconds with the value "value".
 
         public string LightImage => trafficLight.LightImage;
         //Defines a new property that holds the name of the displayed image.
         //When someone searches for its value, it'll ask the trafficLight created in line 11 to get it from the LightImage, defined
         //there at line 7.
 
+        //Call the trafficLight.SetAutoChangeSeconds(AutoChangeSeconds); method, that set the seconds it will take to auto change the light.
         private void SetAutoChangeSeconds()
         {
             trafficLight.SetAutoChangeSeconds(AutoChangeSeconds);
@@ -49,6 +56,8 @@ namespace TrafficLight.ViewModel
             trafficLight.ChangeLight();
         }
 
+        //This method toogles the AutoChange of the light, by calling trafficLight.SwitchAutoChange();.
+        //It also runs OnPropertyChanged which will make sure that view will know something has changed.
         private void SwitchAutoChange()
         {
             trafficLight.SwitchAutoChange();

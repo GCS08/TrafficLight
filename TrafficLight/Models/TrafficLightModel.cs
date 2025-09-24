@@ -22,6 +22,9 @@ namespace TrafficLight.Models
             Yellow,
             Green
         }
+        //Defines a new timer. This is an object of a timer. timer.Elapsed is a list of methods that will run everytime the timer is elapsed. You can see it in the TrafficLight (models logic).
+        //What's special about the timer that it will restart everytime it finishes, means its just a while loop that runs every second.
+        //new (1000) creates the timer of 1000ms, which is equal to 1s.
         protected System.Timers.Timer timer = new(1000);
         protected bool isAutoChange = false;
         protected TrafficLightState state = TrafficLightState.Red;//sets a state variable, holding the current state. obviously, the first one will be red.
