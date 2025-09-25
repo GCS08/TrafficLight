@@ -109,7 +109,8 @@
             Grid.ColumnSpan="1"
             Margin="5"
             Command="{Binding ApplyAutoChangeSec}"
-            Text="{x:Static m:Strings.autoChangeSecText}" />
+            Text="{x:Static m:Strings.autoChangeSecText}"
+            BackgroundColor="{Binding EnterButtonBackgroundColor}"/>
         <!--  Grid.row - puts the button in the sixth row.  -->
         <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
         <!--  Grid.Column - puts the button in the second column.  -->

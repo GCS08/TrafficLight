@@ -13,7 +13,9 @@ namespace TrafficLight.ModelsLogic
         //SwitchChangeLightText is a string property that when is called, returns the value that the GetSwitchChangeLightText returns when it is called
         //on the switchChangeLightText OBJECT (that is defined in the TrafficLightModel), with the bool isAutoChange (which is in the TrafficLightModel as well)
         public override string SwitchChangeLightText => switchChangeLightText.GetSwitchChangeLightText(isAutoChange);
+
         
+
         //A constructor for the model logic, allowing us to use the methods and the properties that are in this class.
         public TrafficLight()
         {
@@ -33,6 +35,11 @@ namespace TrafficLight.ModelsLogic
                 timer.Elapsed += OnTimerElapsed; // Adds the OnTimerElapsed method to the lists of method that run when the new timer is elapsed
                 if (isAutoChange)// If currently the auto change is on, it will start the new timer. if not, it wont.
                     timer.Start();//Starts the new timer.
+                EnterButtonBackgroundColor = Color.Parse("#512BD4");
+            }
+            else
+            {
+                EnterButtonBackgroundColor = Colors.Red;
             }
         }
 

@@ -25,6 +25,8 @@ namespace TrafficLight.ViewModel
         //ICommand is an interface for “something you can run from a button.”
         //Command(SetAutoChangeSeconds) builds a command object that calls the SetAutoChangeSeconds method when the button is tapped.
 
+        public Color EnterButtonBackgroundColor => trafficLight.EnterButtonBackgroundColor;
+
         public Color RedColor => trafficLight.RedColor;
         public Color YellowColor => trafficLight.YellowColor;
         public Color GreenColor => trafficLight.GreenColor;
@@ -48,6 +50,7 @@ namespace TrafficLight.ViewModel
         private void SetAutoChangeSeconds()
         {
             trafficLight.SetAutoChangeSeconds(AutoChangeSeconds);
+            OnPropertyChanged(nameof(EnterButtonBackgroundColor));
         }
 
         //Calls the trafficLight.ChangeLight(); method, that knows how to change the lights:

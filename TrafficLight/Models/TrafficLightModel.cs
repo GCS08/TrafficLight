@@ -22,6 +22,8 @@ namespace TrafficLight.Models
             Yellow,
             Green
         }
+        public Color EnterButtonBackgroundColor { get; set; } = Color.Parse("#512BD4");
+
         //Defines a new timer. This is an object of a timer. timer.Elapsed is a list of methods that will run everytime the timer is elapsed. You can see it in the TrafficLight (models logic).
         //What's special about the timer that it will restart everytime it finishes, means its just a while loop that runs every second.
         //new (1000) creates the timer of 1000ms, which is equal to 1s.
