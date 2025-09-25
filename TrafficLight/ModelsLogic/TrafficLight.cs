@@ -26,11 +26,14 @@ namespace TrafficLight.ModelsLogic
         //It sets a new timer with different seconds.
         public override void SetAutoChangeSeconds(double seconds)
         {
-            timer.Stop();// At first, it stops the previous timer.
-            timer = new(seconds * 1000); // Creates a new timer. The user types seconds and not miliseconds, so we need to convert it.
-            timer.Elapsed += OnTimerElapsed; // Adds the OnTimerElapsed method to the lists of method that run when the new timer is elapsed
-            if (isAutoChange)// If currently the auto change is on, it will start the new timer. if not, it wont.
-                timer.Start();//Starts the new timer.
+            if (seconds > 0)// Obviously, we don't want to create an invalid new timer (like when the interval is 0 or less).
+            {
+                timer.Stop();// At first, it stops the previous timer.
+                timer = new(seconds * 1000); // Creates a new timer. The user types seconds and not miliseconds, so we need to convert it.
+                timer.Elapsed += OnTimerElapsed; // Adds the OnTimerElapsed method to the lists of method that run when the new timer is elapsed
+                if (isAutoChange)// If currently the auto change is on, it will start the new timer. if not, it wont.
+                    timer.Start();//Starts the new timer.
+            }
         }
 
         //This method will run every elapse of the timer because its in the lists on methods.

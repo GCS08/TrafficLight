@@ -31,7 +31,7 @@
         ColumnDefinitions="*,*,*"
         RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*"
         RowSpacing="5">
-        <!--  The page is split into 7 rows. Auto means each row sizes itself to its contents. * means that the row will take maximum width -->
+        <!--  The page is split into 7 rows. Auto means each row sizes itself to its contents. * means that the row will take maximum width  -->
         <!--  Each Frame is just a container (a small border/panel).  -->
         <Frame
             Grid.Row="0"
@@ -71,56 +71,58 @@
             Margin="5"
             Command="{Binding changeLightCommand}"
             Text="{x:Static m:Strings.changeLightText}" />
-            <!--  Grid.row - puts the button in the fourth row.  -->
-            <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
-            <!--  Command - connects the button press to a command in the ViewModel  -->
-            <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
-            <!--  Text - takes a static string called changeLightText from the Strings class in your Models folder and uses it as the button text  -->
+        <!--  Grid.row - puts the button in the fourth row.  -->
+        <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
+        <!--  Command - connects the button press to a command in the ViewModel  -->
+        <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
+        <!--  Text - takes a static string called changeLightText from the Strings class in your Models folder and uses it as the button text  -->
         <Button
             Grid.Row="4"
             Grid.ColumnSpan="3"
             Margin="5"
             Command="{Binding SwitchAutoChangeCommand}"
             Text="{Binding SwitchChangeLightText}" />
-            <!--  Grid.row - puts the button in the fifth row.  -->
-            <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
-            <!--  Command - connects the button press to a command in the ViewModel  -->
-            <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
+        <!--  Grid.row - puts the button in the fifth row.  -->
+        <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
+        <!--  Command - connects the button press to a command in the ViewModel  -->
+        <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
         <Entry
             Grid.Row="5"
-            Grid.ColumnSpan="2"
             Grid.Column="0"
+            Grid.ColumnSpan="2"
             Margin="5"
-            Text="{Binding AutoChangeSeconds}"
+            FontSize="30"
             Keyboard="Numeric"
-            Placeholder="{x:Static m:Strings.autoChangeSecText}"/>
-            <!--  Entry is a field where you can type data.-->
-            <!--  Grid.row - puts the button in the sixth row.  -->
-            <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
-            <!--  Grid.Column - puts the button in the first column.  -->
-            <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
-            <!--  Keyboard determine the type of the input that can be put in the field. Numeric means you can only type numbers.-->
-            <!--  Placeholder is the text that will be written in gray when the user didn't type anything.-->
+            Placeholder="{x:Static m:Strings.autoChangeSecText}"
+            Text="{Binding AutoChangeSeconds}" />
+        <!--  Entry is a field where you can type data.  -->
+        <!--  Grid.row - puts the button in the sixth row.  -->
+        <!--  Grid.Column - puts the button in the first column.  -->
+        <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
+        <!--  FontSize determines the size of the font inside the typing field.  -->
+        <!--  Keyboard determine the type of the input that can be put in the field. Numeric means you can only type numbers.  -->
+        <!--  Placeholder is the text that will be written in gray when the user didn't type anything.  -->
+        <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
         <Button
             Grid.Row="5"
             Grid.Column="2"
             Grid.ColumnSpan="1"
             Margin="5"
             Command="{Binding ApplyAutoChangeSec}"
-            Text="{x:Static m:Strings.autoChangeSecText}"/>
-            <!--  Grid.row - puts the button in the sixth row.  -->
-            <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
-            <!--  Grid.Column - puts the button in the second column.  -->
-            <!--  Command - connects the button press to a command in the ViewModel  -->
-            <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
-            <!--  Text - takes a static string called changeLightText from the Strings class in your Models folder and uses it as the button text  -->
+            Text="{x:Static m:Strings.autoChangeSecText}" />
+        <!--  Grid.row - puts the button in the sixth row.  -->
+        <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
+        <!--  Grid.Column - puts the button in the second column.  -->
+        <!--  Command - connects the button press to a command in the ViewModel  -->
+        <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
+        <!--  Text - takes a static string called changeLightText from the Strings class in your Models folder and uses it as the button text  -->
         <Image
             Grid.Row="6"
             Grid.ColumnSpan="3"
             Source="{Binding LightImage}" />
-            <!--  Grid.row - puts the button in the seventh row.  -->
-            <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
-            <!--  Source defines the source of the image, inside the resources/images folder  -->
-            <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
+        <!--  Grid.row - puts the button in the seventh row.  -->
+        <!--  Grid.ColumnSpan determines the width of the button in the grid.  -->
+        <!--  Source defines the source of the image, inside the resources/images folder  -->
+        <!--  “Binding” is just a tunnel between something on the screen (like the Button) and a property in your view model.  -->
     </Grid>
 </ContentPage>
